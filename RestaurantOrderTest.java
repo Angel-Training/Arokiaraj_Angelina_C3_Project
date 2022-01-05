@@ -25,9 +25,9 @@ public class RestaurantOrderTest {
     
     @Test
     public void adding_item_to_menu_should_increase_order_amount(){
-    	int Total_Cost=null;
-    	String new_item_name=null;
-    	int new_item_price = null;
+    	int Total_Cost=restaurant.UpdateOrder();
+    	String new_item_name="Salad";
+    	int new_item_price = 300;
     	restaurant.addToMenu(new_item_name,new_item_price);
     	int New_Total_Cost=restaurant.UpdateOrder();
     	assertEquals(Total_Cost+new_item_price,New_Total_Cost);
@@ -36,12 +36,16 @@ public class RestaurantOrderTest {
     
     @Test
     public void removing_item_to_menu_should_decrease_order_amount(){
-    	int Total_Cost=null;
-    	String new_item_name=null;
-    	int new_item_price = null;
-    	restaurant.removeFromMenu(new_item_name,new_item_price);
+    	int Total_Cost=restaurant.UpdateOrder();
+    	String new_item_name="Sweet corn soup";
+    	try {
+			restaurant.removeFromMenu(new_item_name);
+		} catch (itemNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     	int New_Total_Cost=restaurant.UpdateOrder();
-    	assertEquals(Total_Cost+new_item_price,New_Total_Cost);
+    	assertEquals(Total_Cost-119,New_Total_Cost);
     	
     }
     

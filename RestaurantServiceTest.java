@@ -16,6 +16,7 @@ class RestaurantServiceTest {
 
 	RestaurantService service = new RestaurantService();
     Restaurant restaurant;
+    Restaurant restaurant2;
     //REFACTOR ALL THE REPEATED LINES OF CODE
     
     @BeforeEach 
@@ -25,12 +26,14 @@ class RestaurantServiceTest {
     restaurant = service.addRestaurant("Amelie's cafe","Chennai",openingTime,closingTime);
     restaurant.addToMenu("Sweet corn soup",119);
     restaurant.addToMenu("Vegetable lasagne", 269);
+    
     }
 
     //>>>>>>>>>>>>>>>>>>>>>>SEARCHING<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
     @Test
     public void searching_for_existing_restaurant_should_return_expected_restaurant_object() throws restaurantNotFoundException {
-    	Object res_name = "Amelie's cafe";
+    	//Object res_name = "Amelie's cafe";
+    	String res_name = "Amelie's cafe";
 		assertEquals(res_name, service.findRestaurantByName("Amelie's cafe").getName());
     }
 
